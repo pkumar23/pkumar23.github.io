@@ -1,3 +1,4 @@
+# ASK ABOUT HOW TO IMPORT ALL OF THIS
 import os
 
 from cs50 import SQL
@@ -32,93 +33,61 @@ app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
-# Configure CS50 Library to use SQLite database
-db = SQL("sqlite:///finance.db")
-
-# Make sure API key is set
-if not os.environ.get("API_KEY"):
-    raise RuntimeError("API_KEY not set")
-
+# Configure CS50 Library to use SQLite database, will need tables for follower/followee + people at each location
+db = SQL("sqlite:///friends.db")
 
 @app.route("/")
 @login_required
-def index():
-    """Show portfolio of stocks"""
-    # Query for all relevant info for a user's transactions and sum up the # of shares bought/sold for each symbol
-    rows = db.execute("SELECT symbol, name, price, SUM(shares), price*SUM(shares) FROM transactions WHERE user_id=:user_id GROUP BY symbol", user_id=session["user_id"])
-
-    # Add up the total value of stocks you own
-    stockValue = 0
-    for row in rows:
-        stockValue += float(row['price*SUM(shares)'])
-        row['price'] = usd(row['price'])
-        row['price*SUM(shares)'] = usd(row['price*SUM(shares)'])
-
-    # Query for the user's current cash balance
-    cash = db.execute("SELECT cash FROM users WHERE id=:user_id", user_id=session["user_id"]) # returns a dictionary
-    currentCash = float(cash[0]['cash'])
-
-    # Calculate grand total
-    totalAssets = currentCash + stockValue
-    currentCash = usd(currentCash)
-    totalAssets = usd(totalAssets)
-
-    return render_template("index.html", rows=rows, currentCash=currentCash, totalAssets=totalAssets)
+def map():
+    """Show interactive map of where students are on campus Note: potential harry potter theme!!!"""
+    # Query for all relevant info for how many students are at each study spot
+    
+    return render_template("map.html", rows=rows)
 
 
-@app.route("/buy", methods=["GET", "POST"])
+@app.route("/check", methods=["GET", "POST"])
 @login_required
-def buy():
-    """Buy shares of stock"""
+def check():
+    """Check the user into a study location"""
      # User reached route via POST (as by submitting a form via POST)
     if request.method == "POST":
-        symbol = request.form.get("symbol")
-        shares = request.form.get("shares")
+        location = request.form.get("location")
+        check = request.form.get("check") 
 
-        #Ensure the symbol exists and the number of shares is positive
-        if symbol == '':
-            return apology("must provide symbol")
-        elif lookup(symbol) == None:
-            return apology("invalid symbol", 403)
-        elif int(shares) <= 0:
-            return apology("must provide a positive number of shares", 403)
-        # make the transaction
-        else:
-            quote = lookup(symbol) #Look up the stock symbol and get a quote
-            cash = db.execute("SELECT cash FROM users WHERE id=:user_id", user_id=session["user_id"]) # returns a dictionary
-            currentCash = cash[0]['cash']
-
-            # cancel the transaction if you don't have enough cash
-            if currentCash < (float(quote["price"])*int(shares)):
-                return apology("cannot afford the transaction", 403)
+        #Ensure the location exists and the number of shares is positive
+        if location == '':
+            return apology("must provide location")
+        # Check the user in
+        elif check == "in":            
+            # cancel process if user is already checked into that location (figure it out)
+            else:
+                db.execute # update query to add 1 to user's location
+            
+        elif check == "out":                       
+            # cancel process if user is not already checked into that location (figure it out)
+            
             # insert the transaction into the database
             else:
-                db.execute("INSERT INTO transactions (user_id, name, symbol, price, shares) VALUES (:user_id, :name, :symbol, :price, :shares)",
-                user_id=session["user_id"], name=quote["name"], symbol=symbol, price=quote["price"], shares=shares)
+                db.execute # update query to subtract 1 to user's location
 
-                # subtract the purchase from the user's cash
-                currentCash = currentCash - (float(quote["price"])*int(shares))
-                db.execute("UPDATE users SET cash=:cash WHERE id=:user_id", cash=currentCash, user_id=session["user_id"])
-
-                return redirect("/")
+                return redirect("/confirm")
 
     #User reached route via GET, display form to request stock quote
     else:
-        return render_template("buy.html")
+        return render_template("check.html")
 
 
-@app.route("/history")
+@app.route("/confirm")
 @login_required
-def history():
-    """Show history of transactions"""
-    # Query for all relevant info for a user's transactions and sum up the # of shares bought/sold for each symbol
-    rows = db.execute("SELECT symbol, shares, price, timestamp FROM transactions WHERE user_id=:user_id", user_id=session["user_id"])
-    return render_template("history.html", rows=rows)
+def confirm():
+    """Confirm user successfully submitted request"""
+    
+    return render_template("confirm.html")
 
 
-@app.route("/change", methods=["GET", "POST"])
-def change():
-    """Allow user to change their password on the login page."""
+@app.route("/friends", methods=["GET", "POST"])
+def friends():
+    """Allow user to follow their friends and see their current location in a table"""
     # User reached route via POST (as by submitting a form via POST)
     if request.method == "POST":
         username=request.form.get("username")
