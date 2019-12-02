@@ -5,36 +5,8 @@
 {% endblock %}
 
 {% block main %}
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Symbol</th>
-                <th>Name</th>
-                <th>Shares</th>
-                <th>Price</th>
-                <th>TOTAL</th>
-            </tr>
-        </thead>
-        <tfoot>
-            <tr>
-                <td colspan="4"></td>
-                <td>{{ totalAssets }}</td>
-            </tr>
-        </tfoot>
-        <tbody>
-        {% for row in rows %}
-            <tr>
-                <td>{{ row['symbol'] }}</td>
-                <td>{{ row['name'] }}</td>
-                <td>{{ row['SUM(shares)'] }}</td>
-                <td>{{ row['price'] }}</td>
-                <td>{{ row['price*SUM(shares)'] }}</td>
-            </tr>
-        {% endfor %}
-            <tr>
-                <td colspan="4">CASH</td>
-                <td>{{ currentCash }}</td>
-            </tr>
-        </tbody>
-    </table>
+    #TODO
+    <! –– Display a jpeg? or tie in with Google maps? https://developers.google.com/maps/documentation/javascript/tutorial
+    Need to figure out how to display a number when cursor is over a certain location on the map - could use coordinates -->
+
 {% endblock %}
