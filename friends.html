@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Find My Friends
+{% endblock %}
+
+{% block main %}
+    <form action="/buy" method="post">
+        <div class="form-group">
+            <input class="form-control" name="username" placeholder="Email" type="text">
+        </div>
+        <button class="btn btn-primary" type="">Follow</button>
+    </form>
+    
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Current Location</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for row in rows %}
+            <tr>
+                <td>{{ row['name'] }}</td>
+                <td>{{ row['location'] }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
