@@ -1,5 +1,5 @@
-#NOTE: Implemented HUID authentication using code from https://github.com/cs50/id/tree/master/flask 
-#TODO Get custom domain name using Github Student Pack https://www.name.com/partner/github-students
+# NOTE: Implemented HUID authentication using code from https://github.com/cs50/id/tree/master/flask 
+# TODO Get custom domain name using Github Student Pack https://www.name.com/partner/github-students
 
 # ASK ABOUT HOW TO IMPORT ALL OF THIS
 import os
@@ -81,7 +81,7 @@ def logout():
     session.clear()
     return redirect(url_for("index"))
 
-@app.route("/")
+@app.route("/map")
 @login_required
 def map():
     """Show interactive map of where students are on campus Note: potential harry potter theme!!!"""
@@ -156,8 +156,7 @@ def friends():
         # query to get your friends and their current locations
         return render_template("friends.html", rows=rows)
 
-
-
+                           
 def errorhandler(e):
     """Handle error"""
     if not isinstance(e, HTTPException):
