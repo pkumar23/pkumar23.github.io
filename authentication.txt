@@ -1,0 +1,5 @@
+export CLIENT_ID=VWvAqOvvHjt1gFNvXAMlascagGTS7WYE
+export CLIENT_SECRET=Iqe99KPAugKsbCOkq45kS3i_iPAtNTDF6affOTpeYAxm6KSIERycpiNpOuXpc_qo
+export SERVER_METADATA_URL=https://id50.auth0.com/.well-known/openid-configuration
+
+REDIRECTION_URI:https://pkumar23.github.io/login
