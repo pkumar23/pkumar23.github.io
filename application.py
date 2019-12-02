@@ -1,4 +1,6 @@
+#NOTE: Implemented HUID authentication using code from https://github.com/cs50/id/tree/master/flask 
 #TODO Get custom domain name using Github Student Pack https://www.name.com/partner/github-students
+
 # ASK ABOUT HOW TO IMPORT ALL OF THIS
 import os
 
