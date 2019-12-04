@@ -1,0 +1,34 @@
+#Dorms {
+  display: none;
+}
+
+#Dorms.show {
+  display: block;
+}
+
+#Houses {
+  display: none;
+}
+
+#Houses.show {
+  display: block;
+}
+
+#Libraries {
+  display: none;
+}
+
+#Libraries.show {
+  display: block;
+}
+
+#Cafes {
+  display: none;
+}
+
+#Cafes.show {
+  display: block;
+}
+
+
+
