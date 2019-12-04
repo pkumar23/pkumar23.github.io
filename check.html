@@ -1,0 +1,23 @@
+{% block title %}
+   Check In / Check Out
+{% endblock %}
+
+{% block main %}
+    <form>
+        <div class="form-group">
+          <label for="Process">Check In or Check Out select</label>
+          <select class="form-control" id="Process">
+            <option>Check In</option>
+            <option>Check Out</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="Location">Location select</label>
+          <select class="form-control" id="Location">
+            <!-- Add options for locations. -->
+            
+          </select>
+        </div>
+        <button class="btn btn-primary" type="submit">Sell</button>
+    </form>
+{% endblock %}
