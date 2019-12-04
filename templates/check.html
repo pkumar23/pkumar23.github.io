@@ -1,25 +1,81 @@
-{% block title %}
-   Check In / Check Out
-{% endblock %}
+ <form>
+     <div class="form-group">
+       <label for="Process">Check In or Check Out</label>
+       <select class="form-control" id="Process">
+         <option>Check In</option>
+         <option>Check Out</option>
+       </select>
+     </div>
+     <div class="form-group">
+       <label for="Location">Location</label>
+       <select class="form-control" id="Location">
+         <option>First-Year Dorm</option>
+         <option>Upperclass House</option>
+         <option>Library</option>
+         <option>Cafe</option>
+         <option>Smith Center</option>
+       </select>
+     </div>
+    <div class="form-group">
+       <label for="Dorms">Dorms</label>
+       <select class="form-control" id="Dorms">
+         <option>Apley Court</option>
+         <option>Canaday</option>
+         <option>Grays</option>
+         <option>Greenough</option>
+         <option>Hollis</option>
+         <option>Holworthy</option>
+         <option>Hurlbut</option>
+         <option>Lionel</option>
+         <option>Mower</option>
+         <option>Mass Hall</option>
+         <option>Matthews</option>
+         <option>Pennypacker</option>
+         <option>Stoughton</option>
+         <option>Straus</option>
+         <option>Thayer</option>
+         <option>Weld</option>
+         <option>Wigglesworth</option>
+       </select>
+     </div>
+     <div class="form-group">
+       <label for="Houses">Houses</label>
+       <select class="form-control" id="Houses">
+         <option>Adams</option>
+         <option>Cabot</option>
+         <option>Currier</option>
+         <option>Dunster</option>
+         <option>Eliot</option>
+         <option>Kirkland</option>
+         <option>Levertt</option>
+         <option>Lowell</option>
+         <option>Mather</option>
+         <option>Phorzheimer</option>
+         <option>Quincy</option>
+         <option>Winthrop</option>   
+       </select>
+     </div>
+     <div class="form-group">
+       <label for="Libraries">Libraries</label>
+       <select class="form-control" id="Libraries">
+         <option>Cabot</option>
+         <option>Langdell Law School Library</option>
+         <option>Lamont</option>
+         <option>Widener</option>
+       </select>
+     </div>
+     <div class="form-group">
+       <label for="Cafes">Cafes</label>
+       <select class="form-control" id="Cafes">
+         <option>Capital One</option>
+         <option>Flour</option>
+         <option>Peet's</option>
+         <option>Starbucks</option>
+         <option>Tatte</option>
+       </select>
+      </div>
+     <button class="btn btn-primary" type="submit">Submit</button>
+ </form>
 
-{% block main %}
-    <form>
-        <div class="form-group">
-          <label for="Process">Check In or Check Out select</label>
-          <select class="form-control" id="Process">
-            <option>Check In</option>
-            <option>Check Out</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="Location">Location select</label>
-          <select class="form-control" id="Location">
-            <option>First-Year Dorm</option>
-            <option>Upperclass House</option>
-            <option>Library</option>
-            <option>Cafe</option>
-          </select>
-        </div>
-        <button class="btn btn-primary" type="submit">Sell</button>
-    </form>
-{% endblock %}
+
+
