@@ -68,7 +68,7 @@ db = SQL("sqlite:///friends.db")
 
 @app.route("/")
 def index():
-    return render_template("templates/index.html", userinfo=session.get("userinfo"))
+    return render_template("index.html", userinfo=session.get("userinfo"))
 
 @app.route("/callback")
 def callback():
