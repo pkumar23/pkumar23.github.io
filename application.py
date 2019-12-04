@@ -15,10 +15,6 @@ from werkzeug.security import check_password_hash, generate_password_hash
 
 from helpers import apology, login_required, lookup, usd
 
-os.system("export CLIENT_ID=VWvAqOvvHjt1gFNvXAMlascagGTS7WYE")
-os.system("export CLIENT_SECRET=Iqe99KPAugKsbCOkq45kS3i_iPAtNTDF6affOTpeYAxm6KSIERycpiNpOuXpc_qo")
-os.system("export SERVER_METADATA_URL=https://id50.auth0.com/.well-known/openid-configuration")
-
 # Check for environment variables
 for variable in ["CLIENT_ID", "CLIENT_SECRET", "SERVER_METADATA_URL"]:
     if not os.environ.get(variable):
