@@ -1,8 +1,8 @@
 const source = document.querySelector("#Location");
-const target1 = document.querySelector("#Dorms);
-const target2 = document.querySelector("#Houses);
-const target3 = document.querySelector("#Libraries);
-const target4 = document.querySelector("#Cafes);
+const target1 = document.querySelector("#Dorms");
+const target2 = document.querySelector("#Houses");
+const target3 = document.querySelector("#Libraries");
+const target4 = document.querySelector("#Cafes");
 
 const displayWhenSelected = (source, value, target) => {
     const selectedIndex = source.selectedIndex;
